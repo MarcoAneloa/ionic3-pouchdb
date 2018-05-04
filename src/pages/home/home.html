@@ -1,14 +1,38 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Contactos
     </ion-title>
+    <ion-buttons end>
+      <button (click)="createNew()" ion-button color="secondary">
+        <ion-icon name='add'></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list>
+    <ion-item-sliding *ngFor="let person of persons">
+      <ion-item>
+        {{person.name}}
+        <p>
+          Email:{{person.email}}
+        </p>
+        <p>
+          Phone:{{person.phone}}
+        </p>
+      </ion-item>
+      <ion-item-options side="left">
+          <button (click)="edit(person)" ion-button color="primary">
+            <ion-icon name="create"></ion-icon>
+            Edit
+          </button>
+          <button (click)="delete(person)"ion-button color="danger">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>    
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
